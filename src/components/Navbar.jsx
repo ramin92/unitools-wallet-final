@@ -1,8 +1,13 @@
-import useWallet from "../hooks/useWallet";
 import ThemeToggle from "./ThemeToggle";
+import { useWalletContext } from "../context/WalletContext";
 
 export default function Navbar() {
-  const { account, network, balance, connectWallet } = useWallet();
+  const {
+    account,
+    network,
+    balance,
+    connectWallet,
+  } = useWalletContext();
 
   return (
     <header className="bg-slate-900 border-b border-slate-800">
@@ -18,10 +23,12 @@ export default function Navbar() {
 
           <button
             onClick={connectWallet}
-            className="bg-green-500 hover:bg-green-600 transition-all duration-300 px-5 py-2 rounded-lg"
+            className="bg-green-500 hover:bg-green-600 px-5 py-2 rounded-lg"
           >
             {account
-              ? account.slice(0, 6) + "..." + account.slice(-4)
+              ? account.slice(0, 6) +
+                "..." +
+                account.slice(-4)
               : "Connect Wallet"}
           </button>
 
@@ -30,23 +37,22 @@ export default function Navbar() {
       </div>
 
       {account && (
-        <div className="px-8 pb-4 space-y-1">
+        <div className="px-8 pb-4 text-sm">
 
-          <p className="text-sm text-slate-400">
-            Wallet: {account}
-          </p>
+          <p>Address : {account}</p>
 
-          <p className="text-sm text-slate-500">
-            Network: {network}
-          </p>
+          <p>Network : {network}</p>
 
-          <p className="text-sm text-green-400">
-            Balance: {Number(balance).toFixed(4)} ETH
+          <p>
+            Balance :
+            {" "}
+            {Number(balance).toFixed(4)}
+            {" "}
+            ETH
           </p>
 
         </div>
       )}
-
     </header>
   );
 }

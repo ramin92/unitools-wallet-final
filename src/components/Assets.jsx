@@ -1,29 +1,53 @@
+import { useWalletContext } from "../context/WalletContext";
+
 export default function Assets() {
+
+  const { tokens } = useWalletContext();
+
   return (
     <div className="bg-slate-900 rounded-xl p-6 mt-8">
+
       <h2 className="text-2xl font-bold mb-5">
-        Assets
+        Wallet Assets
       </h2>
 
-      <div className="flex justify-between py-3 border-b border-slate-700">
-        <span>Bitcoin</span>
-        <span>0.45 BTC</span>
-      </div>
+      {tokens.length === 0 ? (
 
-      <div className="flex justify-between py-3 border-b border-slate-700">
-        <span>Ethereum</span>
-        <span>3.20 ETH</span>
-      </div>
+        <p className="text-slate-400">
+          No Tokens Found
+        </p>
 
-      <div className="flex justify-between py-3 border-b border-slate-700">
-        <span>Solana</span>
-        <span>55 SOL</span>
-      </div>
+      ) : (
 
-      <div className="flex justify-between py-3">
-        <span>USDT</span>
-        <span>2400 USDT</span>
-      </div>
+        tokens.map((token) => (
+
+          <div
+            key={token.symbol}
+            className="flex justify-between py-3 border-b border-slate-700"
+          >
+
+            <div>
+
+              <h3>{token.name}</h3>
+
+              <p className="text-slate-400">
+                {token.symbol}
+              </p>
+
+            </div>
+
+            <div className="text-green-400">
+
+              {Number(token.balance).toFixed(4)}
+
+            </div>
+
+          </div>
+
+        ))
+
+      )}
+
     </div>
   );
 }

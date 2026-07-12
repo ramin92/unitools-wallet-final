@@ -1,55 +1,74 @@
 import { Link } from "react-router-dom";
+
 import {
+  FaHome,
   FaWallet,
   FaChartPie,
-  FaHome,
-  FaCog,
   FaExchangeAlt,
+  FaCog,
+  FaPaperPlane
 } from "react-icons/fa";
 
 export default function Sidebar() {
+
   return (
+
     <aside className="w-64 bg-slate-900 min-h-screen p-6">
-      <h2 className="text-2xl font-bold text-green-400 mb-10">
+
+      <h2 className="text-2xl font-bold text-green-400">
+
         Dashboard
+
       </h2>
 
-      <ul className="space-y-3">
+      <ul className="mt-10 space-y-5">
+
         <Link to="/">
-          <li className="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-800 hover:text-green-400 transition-all duration-300 cursor-pointer">
+          <li className="flex gap-3 items-center hover:text-green-400">
             <FaHome />
-            <span>Home</span>
+            Home
           </li>
         </Link>
 
         <Link to="/wallet">
-          <li className="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-800 hover:text-green-400 transition-all duration-300 cursor-pointer">
+          <li className="flex gap-3 items-center hover:text-green-400">
             <FaWallet />
-            <span>Wallet</span>
+            Wallet
           </li>
         </Link>
 
         <Link to="/portfolio">
-          <li className="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-800 hover:text-green-400 transition-all duration-300 cursor-pointer">
+          <li className="flex gap-3 items-center hover:text-green-400">
             <FaChartPie />
-            <span>Portfolio</span>
+            Portfolio
           </li>
         </Link>
 
         <Link to="/transactions">
-          <li className="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-800 hover:text-green-400 transition-all duration-300 cursor-pointer">
+          <li className="flex gap-3 items-center hover:text-green-400">
             <FaExchangeAlt />
-            <span>Transactions</span>
+            Transactions
+          </li>
+        </Link>
+
+        <Link to="/send">
+          <li className="flex gap-3 items-center hover:text-green-400">
+            <FaPaperPlane />
+            Send
           </li>
         </Link>
 
         <Link to="/settings">
-          <li className="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-800 hover:text-green-400 transition-all duration-300 cursor-pointer">
+          <li className="flex gap-3 items-center hover:text-green-400">
             <FaCog />
-            <span>Settings</span>
+            Settings
           </li>
         </Link>
+
       </ul>
+
     </aside>
+
   );
+
 }
